@@ -1,0 +1,36 @@
+<html ng-app="protoBuild">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+    <script src="/protoBuild/propertyForm.js"></script>
+</head>
+<body ng-controller="propertyFormCtl as ctl">
+<form>
+    Address <input type="text" name="firstName" ng-model="ctl.myForm.address"><br/>
+    URL <input type="text" name="lastName"  ng-model="ctl.myForm.url"><br/>
+    Property Type<select ng-model="ctl.myForm.propertyType"
+            ng-options="type.id as type.name for type in ctl.propertyTypes">
+    </select><br/>
+
+    <span ng-show="myForm.propertyType > 0">Bedrooms <input type="text" name="lastName"  ng-model="myForm.url"><br/></span>
+
+    <div ng-repeat="roomType in ctl.roomTypes"><bold>{{roomType.name}}</bold><button ng-click="ctl.addRoom(roomType.id)">+</button>
+    <div class="form-group"  ng-repeat="room in ctl.myForm.rooms | filter: {type:roomType.id}">
+
+    <ng-form name="roomForm">{{room.id}}
+        <label for="roomName">Room Name:</label>
+        <input id="roomName" type="text" name="name" ng-model="room.name" />
+        <label for="roomWidth">Width:</label>
+        <input id="roomWidth" type="number" name="width" ng-model="room.width" required />
+        <label for="roomLength">Length:</label>
+        <input id="roomLength" type="number" name="length" ng-model="room.length" />
+        <label for="roomHeight">Height:</label>
+        <input id="roomHeight" type="number" name="height" ng-model="room.height" />
+        <button ng-click="ctl.removeRoom(room.id)">-</button><br />
+    </ng-form>
+    </div>
+    </div>
+</form>
+{{ctl.myForm | json}}
+</body>
+</html>
