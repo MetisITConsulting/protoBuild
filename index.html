@@ -14,8 +14,10 @@
 
     <span ng-show="myForm.propertyType > 0">Bedrooms <input type="text" name="lastName"  ng-model="myForm.url"><br/></span>
 
-    <div ng-repeat="roomType in ctl.roomTypes"><bold>{{roomType.name}}</bold><button ng-click="ctl.addRoom(roomType.id)">+</button>
-    <div class="form-group"  ng-repeat="room in ctl.myForm.rooms | filter: {type:roomType.id}">
+    <button ng-click="ctl.toggleShowAllRoomTypes()" ng-bind="ctl.showAllButtonName()"></button><br />
+
+    <div ng-repeat="roomType in ctl.roomTypes | orderBy: 'name'" ng-show="ctl.showRoomType(roomType.id)"><bold>{{roomType.name}}</bold><button ng-click="ctl.addRoom(roomType.id)">+</button>
+    <div class="form-group"  ng-repeat="room in ctl.myForm.rooms | filter: {type : roomType.id} : true">
 
     <ng-form name="roomForm">{{room.id}}
         <label for="roomName">Room Name:</label>
