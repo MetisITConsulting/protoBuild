@@ -1,4 +1,11 @@
-var protoBuild = angular.module('protoBuild', []);
+var protoBuild = angular.module('protoBuild', ['ngMaterial']);
+
+protoBuild.config(function($mdThemingProvider) {
+    // Configure a dark theme with primary foreground yellow
+    $mdThemingProvider.theme('docs-dark', 'default')
+        .primaryPalette('yellow')
+        .dark();
+});
 
 protoBuild.controller('propertyFormCtl', [function () {
     var self = this;
@@ -20,6 +27,8 @@ protoBuild.controller('propertyFormCtl', [function () {
     self.myForm = {};
     self.myForm.address = "46 Maltings Close, London, E3 3TB";
     self.myForm.url  = "www.google.com";
+    self.myForm.priceFrom = 250000;
+    self.myForm.priceTo = 30000;
     self.myForm.propertyType  = 1;
     self.myForm.rooms = rooms;
 
