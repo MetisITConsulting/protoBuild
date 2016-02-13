@@ -9,28 +9,6 @@ protoBuild.config(function($mdThemingProvider) {
 
 protoBuild.controller('propertyFormCtl', [function () {
     var self = this;
-    var rooms = [
-        {id: 0, type: 0, name: "Lounge", width: 0, length: 0, height: 0},
-        {id: 1, type: 1, name: "Kitchen", width: 0, length: 0, height: 0},
-        {id: 2, type: 2, name: "Master Bedroom", width: 0, length: 0, height: 0},
-        {id: 3, type: 3, name: "WC", width: 0, length: 0, height: 0}
-    ];
-
-    var ShowAllButton = [
-        {state: false, name: "Show More"},
-        {state: true, name: "Show Less"}
-    ];
-
-    self.showAllRoomTypes = false;
-    self.showAllRoomTypesButton = 'Show All';
-
-    self.myForm = {};
-    self.myForm.address = "46 Maltings Close, London, E3 3TB";
-    self.myForm.url  = "www.google.com";
-    self.myForm.priceFrom = 250000;
-    self.myForm.priceTo = 30000;
-    self.myForm.propertyType  = 1;
-    self.myForm.rooms = rooms;
 
     self.saleTypes = [
         {id: 0, name: 'Auction'},
@@ -72,6 +50,22 @@ protoBuild.controller('propertyFormCtl', [function () {
         {id: 24, name: 'Pool Room', defaultName: 'Pool Room'}
     ];
 
+    var ShowAllButton = [
+        {state: false, name: "Show More"},
+        {state: true, name: "Show Less"}
+    ];
+
+    self.showAllRoomTypes = false;
+    self.showAllRoomTypesButton = 'Show All';
+
+    self.myForm = {};
+    self.myForm.address = "46 Maltings Close, London, E3 3TB";
+    self.myForm.url  = "www.google.com";
+    self.myForm.priceFrom = 250000;
+    self.myForm.priceTo = 30000;
+    self.myForm.propertyType  = 1;
+    self.myForm.rooms = [];
+
     self.addRoom = function(addtype) {
         var newInx = 0;
         if (self.myForm.rooms.length > 0){
@@ -84,7 +78,7 @@ protoBuild.controller('propertyFormCtl', [function () {
 
         roomName = tempRooms.length === 0 ? roomType[0].defaultName : roomType[0].name + " " + (tempRooms.length + 1);
 
-        self.myForm.rooms.push({id: newInx, type: addtype, name: roomName, width: 0, length: 0, height: 0});
+        self.myForm.rooms.push({id: newInx, type: addtype, name: roomName, width: '', length: '', height: ''});
     }
 
     self.removeRoom = function(roomId) {
@@ -103,4 +97,10 @@ protoBuild.controller('propertyFormCtl', [function () {
     self.showAllButtonName = function() {
         return self.showAllRoomTypes ? 'Show Less' : 'Show More';
     }
+
+    self.addRoom(0);
+    self.addRoom(1);
+    self.addRoom(2);
+    self.addRoom(3);
+    self.addRoom(4);
 }]);

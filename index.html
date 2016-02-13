@@ -40,7 +40,7 @@
             <div ng-repeat="roomType in ctl.roomTypes | orderBy: 'name'" ng-show="ctl.showRoomType(roomType.id)">
                 <md-toolbar class="md-theme-light">
                     <h2 class="md-toolbar-tools">
-                        <span>{{roomType.name}}<md-button ng-click="ctl.addRoom(roomType.id)">Add</md-button></span>
+                        <span>{{roomType.name}}<md-button ng-click="ctl.addRoom(roomType.id)"><i class="zmdi zmdi-plus-circle-o zmdi-hc-2x"></i></md-button></span>
                     </h2>
                 </md-toolbar>
                 <md-content>
@@ -64,8 +64,13 @@
                                         <label>Height</label>
                                         <input ng-model="room.height" type="number">
                                     </md-input-container>
-                                    <md-button class="md-secondary" ng-click="ctl.removeRoom(room.id)">Remove</md-button>
                                 </div>
+                                    <md-input-container class="md-block">
+                                        <label>Description</label>
+                                        <textarea ng-model="room.description"  md-select-on-focus></textarea>
+                                    </md-input-container>
+                                    <md-button class="md-secondary" ng-click="ctl.removeRoom(room.id)"><i class="zmdi zmdi-minus-circle-outline zmdi-hc-2x"></i></md-button>
+                                <md-divider></md-divider>
                             </ng-form>
                         </md-list-item>
                     </md-list>
@@ -88,6 +93,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
     <!-- Your application bootstrap  -->
     <script src="/protoBuild/propertyForm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 </div>
 </body>
 </html>
