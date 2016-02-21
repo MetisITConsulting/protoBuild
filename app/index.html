@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="protoBuild"  ng-controller="tabCtrl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+</head>
+<body>
+<div ng-cloak>
+    <md-content>
+        <md-tabs md-selected="currentTab" md-dynamic-height md-border-bottom md-stretch-tabs="always" class="md-primary md-hue-2">
+            <md-tab label="Property Details" ui-sref="propertyForm"  md-active="$state.is('propertyForm')">
+                <md-tab-body ui-view="propertyForm" layout="vertical" layout-fill></md-tab-body>
+            </md-tab>
+            <md-tab label="Profitability" ui-sref="view2"  md-active="$state.is('view2')">
+                <md-tab-body ui-view="view2" layout="vertical" layout-fill></md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+
+<div ui-view></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
+  <!-- Your application bootstrap  -->
+
+  <script src="app.js"></script>
+  <script src="propertyForm/propertyForm.js"></script>
+  <script src="view2/view2.js"></script>
+</body>
+</html>
